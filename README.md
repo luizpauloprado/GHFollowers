@@ -7,7 +7,9 @@ https://seanallen.teachable.com/courses/681906/
 
 ### Content
 
+- [GitHub API](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
 - [Writing constraints programmatically](https://www.avanderlee.com/swift/auto-layout-programmatically/)
+- [Codable cheat sheet](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet)
 
 ### Arch
 
@@ -18,3 +20,5 @@ https://seanallen.teachable.com/courses/681906/
 
 - [SemanticUI](https://github.com/cocoacontrols/SemanticUI)
 - [TinyConstraints](https://github.com/roberthein/TinyConstraints)
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [Moya](https://github.com/Moya/Moya)
