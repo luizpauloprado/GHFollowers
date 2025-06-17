@@ -34,7 +34,7 @@ class SearchVC: UIViewController {
     func configureLogo() {
         view.addSubview(logo)
         logo.translatesAutoresizingMaskIntoConstraints = false
-        logo.image = UIImage(named: image)!
+        logo.image = UIImage(named: image)! // Extract to custom views ???
         
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
