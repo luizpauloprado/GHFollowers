@@ -10,6 +10,7 @@ import UIKit
 class SearchVC: UIViewController {
     
     let logo = UIImageView()
+    let image: String = "gh-logo"
     let username = GFTextField()
     let button = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     
@@ -18,6 +19,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         configureLogo()
         configureUsername()
         configureButton()
@@ -28,30 +30,11 @@ class SearchVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
-    func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func pushFollowerListVC() {
-        
-        guard isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username",
-                                       message: "Please enter a username. We need to know who to look for on GitHub 😀.",
-                                       buttonTitle: "Ok")
-            return
-        }
-        
-        let followerListVC = FollowerListVC()
-        followerListVC.username = username.text
-        followerListVC.title = username.text
-        navigationController?.pushViewController(followerListVC, animated: true)
-    }
     
     func configureLogo() {
         view.addSubview(logo)
         logo.translatesAutoresizingMaskIntoConstraints = false
-        logo.image = UIImage(named: "gh-logo")!
+        logo.image = UIImage(named: image)!
         
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
@@ -86,6 +69,26 @@ class SearchVC: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func pushFollowerListVC() {
+        
+        guard isUsernameEntered else {
+            presentGFAlertOnMainThread(title: "Empty Username",
+                                       message: "Please enter a username. We need to know who to look for on GitHub 😀.",
+                                       buttonTitle: "Ok")
+            return
+        }
+        
+        let followerListVC = FollowerListVC()
+        followerListVC.username = username.text
+        followerListVC.title = username.text
+        navigationController?.pushViewController(followerListVC, animated: true)
     }
 }
 
