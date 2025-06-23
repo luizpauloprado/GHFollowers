@@ -10,6 +10,7 @@ https://seanallen.teachable.com/courses/681906/
 - [GitHub API](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
 - [Writing constraints programmatically](https://www.avanderlee.com/swift/auto-layout-programmatically/)
 - [Codable cheat sheet](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet)
+- [Swift Strong and Weak References](https://www.programiz.com/swift-programming/strong-weak-reference)
 
 ### Arch
 
