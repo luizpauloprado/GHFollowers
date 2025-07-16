@@ -103,4 +103,7 @@ DispatchQueue.main.async is a method in Swift (and other languages with similar 
 In iOS development, present and UINavigationController offer distinct ways to transition between view controllers. present is used for modally displaying a view controller, often for actions like alerts or temporary workflows, while a UINavigationController manages a stack of view controllers with a navigation bar and back button for hierarchical navigation. 
 
 ## To do
-TBD
+- Create a screen from scratch
+- Add tests
+- Organize code? (at least search some organization patterns)
+- Ask AI interview questions
