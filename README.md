@@ -29,7 +29,7 @@ https://seanallen.teachable.com/courses/681906/
 
 ## Annotations
 
-###UIView:
+### UIView
 Purpose:
 Represents a rectangular area on the screen and handles drawing and event handling within that area. 
 Examples:
@@ -39,13 +39,13 @@ A UIView is primarily responsible for rendering content and responding to user i
 Life Cycle:
 UIViews have their own lifecycle involving updates, layout, and rendering, which can be triggered by changes in the view's bounds or constraints. 
 
-###UIViewController 
+### UIViewController 
 Purpose: Manages a single view and its associated content, handling user interactions and data flow. 
 Lifecycle: Has a defined lifecycle (viewDidLoad, viewWillAppear, etc.) that UIKit manages. 
 Presentation: Can be presented modally or pushed onto a navigation stack. 
 Root View: Has a single root view, which can have subviews. 
 
-###ChildViewController 
+### ChildViewController 
 Purpose: A view controller that is managed by another view controller (the "parent"). 
 Containment: Allows for creating modular, reusable UI components. 
 Relationship: A parent view controller can have multiple child view controllers, creating a hierarchy. 
