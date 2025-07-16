@@ -62,6 +62,7 @@ Notifications & Observers = one to many
 
 #### Delegates & Protocols
 (1) Pros
+
 Loose Coupling:
 Delegates allow objects to interact without needing to know each other's specific implementation details. This means changes in one object are less likely to break other parts of the code. 
 Code Reusability:
@@ -72,6 +73,7 @@ Event Handling:
 Delegates are commonly used for handling events and callbacks, allowing one object to notify another about specific actions or changes. 
 
 (2) Cons
+
 Boilerplate Code:
 Implementing delegates often requires more initial setup and boilerplate code compared to simpler approaches like closures, especially when defining the protocol and creating the delegate relationship. 
 Potential for Strong Reference Cycles:
@@ -83,14 +85,16 @@ While delegation generally promotes loose coupling, using it in a way that overl
 
 #### Notifications & Observers 
 (1) Pros
+
 Decouples objects: Easy to modify or add new functionality without affecting other parts of the code. This can help make our code more modular and maintainable.
 One-to-many relationship: A single observable object can notify multiple observer objects at once. This is useful when multiple objects need to be notified of changes in a state.
 Event-driven programming: Simplify the design of code, making it more intuitive and easier to follow.
 
 (2) Cons
+
 Memory leaks: Prone to memory leaks if observers are not properly removed from the observable object when they are no longer needed. This might be problematic in long-running applications where objects are created and destroyed frequently.
 Efficiency: Less efficient than other communication patterns, as each observer needs to be notified individually when a change occurs. This can result in performance issues if there are a large number of observers or if updates occur frequently.
 Control flow: Difficult to reason about the flow of data and control, as observers can be notified at unpredictable times. This can make it harder to debug issues.
 
-#### DispatchQueue.main.async
+### DispatchQueue.main.async
 DispatchQueue.main.async is a method in Swift (and other languages with similar concurrency APIs) used to execute a block of code asynchronously on the main thread. It ensures that UI updates and other tasks that must run on the main thread are handled properly, preventing UI blocking and potential crashes. 
