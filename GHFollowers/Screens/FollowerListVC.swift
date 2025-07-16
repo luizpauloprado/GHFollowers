@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FolloweListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListVC: UIViewController {
         
     enum Section { case main }
@@ -17,6 +21,7 @@ class FollowerListVC: UIViewController {
     var hasMoreFollowers = true
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var isSearching: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +122,17 @@ extension FollowerListVC: UICollectionViewDelegate {
             getFollowers(username: username, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
+        
+        let userInfoVC = UserInfoVC()
+        userInfoVC.username = follower.login
+        userInfoVC.delegate = self
+        let navigationController = UINavigationController(rootViewController: userInfoVC)
+        present(navigationController, animated: true)
+    }
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
@@ -125,6 +141,7 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
             return
         }
         
+        isSearching = true
         // filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         filteredFollowers = followers.filter { follower in
             follower.login.lowercased().contains(filter.lowercased())
@@ -132,8 +149,21 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         updateData(on: filteredFollowers)
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(on: followers)
+    }
+}
+
+extension FollowerListVC: FolloweListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page)
     }
 }
