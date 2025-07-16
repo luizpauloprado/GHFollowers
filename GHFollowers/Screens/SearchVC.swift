@@ -10,9 +10,9 @@ import UIKit
 class SearchVC: UIViewController {
     
     let logo = UIImageView()
-    let image: String = "gh-logo"
     let username = GFTextField()
     let button = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    var logoImageViewTopConstraint: NSLayoutConstraint!
     
     var isUsernameEntered: Bool { return !username.text!.isEmpty }
     
@@ -28,16 +28,21 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        username.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func configureLogo() {
         view.addSubview(logo)
         logo.translatesAutoresizingMaskIntoConstraints = false
-        logo.image = UIImage(named: image)! // Extract to custom views ???
+        logo.image = Images.ghLogo
+        
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        
+        logoImageViewTopConstraint = logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+        logoImageViewTopConstraint.isActive = true
         
         NSLayoutConstraint.activate([
-            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logo.heightAnchor.constraint(equalToConstant: 200),
             logo.widthAnchor.constraint(equalToConstant: 200)
@@ -72,12 +77,11 @@ class SearchVC: UIViewController {
     }
     
     func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
     }
     
     @objc func pushFollowerListVC() {
-        
         guard isUsernameEntered else {
             presentGFAlertOnMainThread(title: "Empty Username",
                                        message: "Please enter a username. We need to know who to look for on GitHub 😀.",
@@ -85,9 +89,9 @@ class SearchVC: UIViewController {
             return
         }
         
-        let followerListVC = FollowerListVC()
-        followerListVC.username = username.text
-        followerListVC.title = username.text
+        username.resignFirstResponder()
+        
+        let followerListVC = FollowerListVC(username: username.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
 }

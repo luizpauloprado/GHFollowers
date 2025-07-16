@@ -14,6 +14,7 @@ https://seanallen.teachable.com/courses/681906/
 - [NSDateFormatter.com](https://www.nsdateformatter.com/)
 - [Communication Patterns in Swift](https://medium.com/@hakanor/communication-patterns-in-swift-0725041ad409)
 - [Mastering Swift Notification Observers with Coding Examples](https://vikramios.medium.com/swift-notification-observers-bbc5b86a7781)
+- [The Ultimate Guide To iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
 
 ### Arch
 
