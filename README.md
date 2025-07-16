@@ -98,3 +98,9 @@ Control flow: Difficult to reason about the flow of data and control, as observe
 
 ### DispatchQueue.main.async
 DispatchQueue.main.async is a method in Swift (and other languages with similar concurrency APIs) used to execute a block of code asynchronously on the main thread. It ensures that UI updates and other tasks that must run on the main thread are handled properly, preventing UI blocking and potential crashes. 
+
+### Present vs. UINavigationViewController
+In iOS development, present and UINavigationController offer distinct ways to transition between view controllers. present is used for modally displaying a view controller, often for actions like alerts or temporary workflows, while a UINavigationController manages a stack of view controllers with a navigation bar and back button for hierarchical navigation. 
+
+## To do
+TBD
