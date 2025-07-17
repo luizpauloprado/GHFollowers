@@ -19,7 +19,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        
+        view.addSubviews(logo, username, button)
         configureLogo()
         configureUsername()
         configureButton()
@@ -33,7 +33,6 @@ class SearchVC: UIViewController {
     }
     
     func configureLogo() {
-        view.addSubview(logo)
         logo.translatesAutoresizingMaskIntoConstraints = false
         logo.image = Images.ghLogo
         
@@ -53,7 +52,6 @@ class SearchVC: UIViewController {
     }
     
     func configureUsername() {
-        view.addSubview(username)
         username.delegate = self
         
         NSLayoutConstraint.activate([
@@ -65,7 +63,6 @@ class SearchVC: UIViewController {
     }
     
     func configureButton() {
-        view.addSubview(button)
         button.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([

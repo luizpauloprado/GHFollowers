@@ -7,6 +7,7 @@ https://seanallen.teachable.com/courses/681906/
 
 ### Content
 
+- [Setting up project without storyboard 📱](https://dev.to/markmatute/ios-swift-setting-up-project-without-storyboard-45al)
 - [GitHub API](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
 - [Writing constraints programmatically](https://www.avanderlee.com/swift/auto-layout-programmatically/)
 - [Codable cheat sheet](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet)
@@ -103,6 +104,9 @@ DispatchQueue.main.async is a method in Swift (and other languages with similar 
 
 ### Present vs. UINavigationViewController
 In iOS development, present and UINavigationController offer distinct ways to transition between view controllers. present is used for modally displaying a view controller, often for actions like alerts or temporary workflows, while a UINavigationController manages a stack of view controllers with a navigation bar and back button for hierarchical navigation. 
+
+### Enum vs. Structures
+In Swift, both structs and enums are value types, but they serve different purposes. Structs are used to group related data and functionality, while enums are used to define a set of related values. Structs are copied when passed around, making them suitable for representing simple data structures. Enums, on the other hand, are used to represent a fixed set of related values, ensuring type safety and preventing unexpected values. 
 
 ## To do
 - Create a screen from scratch
