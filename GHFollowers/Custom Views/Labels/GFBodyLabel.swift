@@ -18,10 +18,9 @@ class GFBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init (textAlignemnt: NSTextAlignment) {
-        super.init(frame: .zero)
-        self.textAlignment = textAlignemnt
-        configure()
+    convenience init(textAlignemnt: NSTextAlignment) {
+        self.init(frame: .zero)
+        textAlignment = textAlignemnt
     }
     
     private func configure() {

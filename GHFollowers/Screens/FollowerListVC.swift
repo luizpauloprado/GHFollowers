@@ -11,8 +11,8 @@ protocol FolloweListVCDelegate: AnyObject {
     func didRequestFollowers(for username: String)
 }
 
-class FollowerListVC: UIViewController {
-        
+class FollowerListVC: GFDataLoadingVC {
+    
     enum Section { case main }
     var username: String!
     var followers: [Follower] = []
@@ -110,7 +110,7 @@ class FollowerListVC: UIViewController {
                 cell.set(follower: follower)
                 
                 return cell
-        })
+            })
     }
     
     func updateData(on followers: [Follower]) {
@@ -181,14 +181,13 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         }
         
         isSearching = true
-        // filteredFollowers = followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
         filteredFollowers = followers.filter { follower in
             follower.login.lowercased().contains(filter.lowercased())
         }
         
         updateData(on: filteredFollowers)
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)

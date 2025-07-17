@@ -14,17 +14,12 @@ class GFContainerView: UIView {
         configure()
     }
     
-    init(backgroundColor: UIColor) {
-        super.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-        configure()
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func configure() {
+        backgroundColor = .systemBackground
         layer.cornerRadius = 16
         layer.borderWidth = 2
         layer.borderColor = UIColor.white.cgColor

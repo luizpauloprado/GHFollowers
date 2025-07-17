@@ -9,7 +9,7 @@ import UIKit
 
 class GFAlertVC: UIViewController {
     
-    let containerView = GFContainerView(backgroundColor: .systemBackground)
+    let containerView = GFContainerView()
     let titleLabel = GFTitleLabel(textAlignemnt: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlignemnt: .center)
     let button = GFButton(backgroundColor: .systemPink, title: "Ok")
@@ -34,7 +34,7 @@ class GFAlertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         configureContainer()
         configureTitleLabel()
         configureActionButton()

@@ -7,8 +7,6 @@
 
 import UIKit
 
-// TODO: Refactor
-
 class NetworkManager {
     static let shared = NetworkManager()
     private let baseUrl = "https://api.github.com/users/"
@@ -39,7 +37,7 @@ class NetworkManager {
                 completed(.failure(.invalidData))
                 return
             }
-   
+            
             do {
                 // let followers = try JSONDecoder().decode([Follower].self, from: data)
                 let decoder = JSONDecoder()
@@ -77,10 +75,11 @@ class NetworkManager {
                 completed(.failure(.invalidData))
                 return
             }
-   
+            
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch {
@@ -91,27 +90,33 @@ class NetworkManager {
         task.resume()
     }
     
-    func downloadImage(from urlString: String, completed: @escaping (UIImage) -> ()) {
-            let cacheKey = NSString(string: urlString)
-            
-            if let image = cache.object(forKey: cacheKey) {
-                completed(image)
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> ()) {
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self,
+                  error == nil,
+                  let response = response as? HTTPURLResponse, response.statusCode == 200,
+                  let data = data,
+                  let image = UIImage(data: data) else {
+                completed(nil)
                 return
             }
             
-            guard let url = URL(string: urlString) else { return }
-            
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard error == nil else { return }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-                guard let data = data else { return }
-                
-                guard let image = UIImage(data: data) else { return }
-                self.cache.setObject(image, forKey: cacheKey)
-                
-                DispatchQueue.main.async { completed(image) }
-            }
-            
-            task.resume()
+            self.cache.setObject(image, forKey: cacheKey)
+            DispatchQueue.main.async { completed(image) }
         }
+        
+        task.resume()
+    }
 }

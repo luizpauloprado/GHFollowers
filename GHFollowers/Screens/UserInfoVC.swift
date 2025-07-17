@@ -61,12 +61,12 @@ class UserInfoVC: UIViewController {
         
         self.add(childVC: repoItemVC, to: self.itemViewOne)
         self.add(childVC: followerItemVC, to: self.itemViewTwo)
-        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
+        self.dateLabel.text = "GitHub since \(user.createdAt.convertToMonthYearFormat())"
     }
     
     func layoutUI() {
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
-
+        
         let padding: CGFloat = 20
         let itemHight: CGFloat = 140
         
