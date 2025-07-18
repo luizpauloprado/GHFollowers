@@ -10,6 +10,7 @@ https://seanallen.teachable.com/courses/681906/
 - [Setting up project without storyboard 📱](https://dev.to/markmatute/ios-swift-setting-up-project-without-storyboard-45al)
 - [GitHub API](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
 - [Writing constraints programmatically](https://www.avanderlee.com/swift/auto-layout-programmatically/)
+- [Understanding Frame and Bounds in iOS Views](https://medium.com/@khmannaict13/understanding-frame-and-bounds-in-ios-views-f23255277f56)
 - [Codable cheat sheet](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet)
 - [Swift Strong and Weak References](https://www.programiz.com/swift-programming/strong-weak-reference)
 - [NSDateFormatter.com](https://www.nsdateformatter.com/)
@@ -111,7 +112,7 @@ In iOS development, present and UINavigationController offer distinct ways to tr
 In Swift, both structs and enums are value types, but they serve different purposes. Structs are used to group related data and functionality, while enums are used to define a set of related values. Structs are copied when passed around, making them suitable for representing simple data structures. Enums, on the other hand, are used to represent a fixed set of related values, ensuring type safety and preventing unexpected values. 
 
 ## To do
-- Create a screen from scratch
 - Add tests
+- Create a screen from scratch
 - Organize code? (at least search some organization patterns)
 - Ask AI interview questions
