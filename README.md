@@ -17,6 +17,8 @@ https://seanallen.teachable.com/courses/681906/
 - [Mastering Swift Notification Observers with Coding Examples](https://vikramios.medium.com/swift-notification-observers-bbc5b86a7781)
 - [The Ultimate Guide To iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
 - [Understanding Convenience Initializers in Swift](https://medium.com/@harshaag99/understanding-convenience-initializers-in-swift-a6d169ed3ed1)
+- [Variadic functions](https://www.hackingwithswift.com/sixty/5/7/variadic-functions)
+- [iPhone models adoption](https://mixpanel.com/trends/#)
 
 ### Arch
 

@@ -21,24 +21,22 @@ enum PersistenceManager {
     static func updateWith(favorite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
         retrieveFavorites { result in
             switch result {
-            case .success(let favorites):
-                var retrieved = favorites
-                
+            case .success(var favorites):
                 switch actionType {
                 case .add:
-                    guard retrieved.contains(favorite) == false else {
+                    guard favorites.contains(favorite) == false else {
                         completed(.alreadyInFavorites)
                         return
                     }
                     
-                    retrieved.append(favorite)
+                    favorites.append(favorite)
                 case .remove:
-                    retrieved.removeAll { item in
+                    favorites.removeAll { item in
                         item.login == favorite.login
                     }
                 }
                 
-                completed(saveFavorties(favorites: retrieved))
+                completed(saveFavorties(favorites: favorites))
             case .failure(let error):
                 completed(error)
             }
@@ -72,13 +70,13 @@ enum PersistenceManager {
         return nil
     }
     
-//    static func save<T: Codable>(_ value: T, forKey key: String) {
-//        let data = try? JSONEncoder().encode(value)
-//        defaults.set(data, forKey: key)
-//    }
-//
-//    static func load<T: Codable>(_ type: T.Type, forKey key: String) -> T? {
-//        return nil
-//    }
+    //    static func save<T: Codable>(_ value: T, forKey key: String) {
+    //        let data = try? JSONEncoder().encode(value)
+    //        defaults.set(data, forKey: key)
+    //    }
+    //
+    //    static func load<T: Codable>(_ type: T.Type, forKey key: String) -> T? {
+    //        return nil
+    //    }
     
 }
