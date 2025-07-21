@@ -10,7 +10,7 @@ import UIKit
 class SearchVC: UIViewController {
     let logo = UIImageView()
     let username = GFTextField()
-    let button = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    let button = GFButton(color: .systemGreen, title: "Get Followers", systemImageName: "person.3")
     var isUsernameEntered: Bool { return !username.text!.isEmpty }
     
     override func viewDidLoad() {
