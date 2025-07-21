@@ -23,6 +23,7 @@ https://seanallen.teachable.com/courses/681906/
 - [Variadic functions](https://www.hackingwithswift.com/sixty/5/7/variadic-functions)
 - [iPhone models adoption](https://mixpanel.com/trends/#)
 - [Meet the UIKit Button System](https://developer.apple.com/videos/play/wwdc2021/10064/)
+- [Swift async](https://developer.apple.com/videos/wwdc2021/?q=async)
 
 ### Arch
 
