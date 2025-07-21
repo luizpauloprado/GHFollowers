@@ -3,6 +3,8 @@
 GitHub followers app from Sean Allen course
 https://seanallen.teachable.com/courses/681906/
 
+![Jul-21-2025 16-00-45](https://github.com/user-attachments/assets/ad9933a6-251f-4cfc-b2ee-a59dba907c8d)
+
 ## Links
 
 ### Content
