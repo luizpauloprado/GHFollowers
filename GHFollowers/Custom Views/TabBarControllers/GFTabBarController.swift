@@ -8,11 +8,9 @@
 import UIKit
 
 class GFTabBarController: UITabBarController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // RATARIA CONFIRMAR
         let appearance = UINavigationBarAppearance()
         appearance.configureWithDefaultBackground()
         UINavigationBar.appearance().standardAppearance = appearance

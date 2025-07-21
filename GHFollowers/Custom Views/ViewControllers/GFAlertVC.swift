@@ -8,7 +8,6 @@
 import UIKit
 
 class GFAlertVC: UIViewController {
-    
     let containerView = GFContainerView()
     let titleLabel = GFTitleLabel(textAlignemnt: .center, fontSize: 20)
     let messageLabel = GFBodyLabel(textAlignemnt: .center)
@@ -90,5 +89,4 @@ class GFAlertVC: UIViewController {
     @objc func dismissVC() {
         dismiss(animated: true)
     }
-
 }

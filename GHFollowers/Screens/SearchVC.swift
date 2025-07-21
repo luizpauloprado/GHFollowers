@@ -8,12 +8,9 @@
 import UIKit
 
 class SearchVC: UIViewController {
-    
     let logo = UIImageView()
     let username = GFTextField()
     let button = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
-    var logoImageViewTopConstraint: NSLayoutConstraint!
-    
     var isUsernameEntered: Bool { return !username.text!.isEmpty }
     
     override func viewDidLoad() {
@@ -36,12 +33,8 @@ class SearchVC: UIViewController {
         logo.translatesAutoresizingMaskIntoConstraints = false
         logo.image = Images.ghLogo
         
-        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
-        
-        logoImageViewTopConstraint = logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
-        logoImageViewTopConstraint.isActive = true
-        
         NSLayoutConstraint.activate([
+            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80),
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logo.heightAnchor.constraint(equalToConstant: 200),
             logo.widthAnchor.constraint(equalToConstant: 200)

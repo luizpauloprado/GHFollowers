@@ -12,15 +12,14 @@ protocol UserInfoVCDelegate: AnyObject {
 }
 
 class UserInfoVC: UIViewController {
-    
     let scrollView = UIScrollView()
     let contentView = UIView()
-    
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
     let dateLabel = GFBodyLabel(textAlignemnt: .center)
     var itemViews: [UIView] = []
+    
     var username: String!
     weak var delegate: UserInfoVCDelegate!
     

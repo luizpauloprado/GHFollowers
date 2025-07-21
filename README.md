@@ -113,6 +113,9 @@ In Swift, both structs and enums are value types, but they serve different purpo
 
 ## To do
 - Add tests
-- Create a screen from scratch
-- Organize code? (at least search some organization patterns)
+- Create a new screen from scratch
+- Organize code? (at least search some organization/architecture patterns)
 - Ask AI interview questions
+- PersistenceManager refactoring
+- NetworkManager refactoring 
+- Use URLComponents in NetworkManager

@@ -8,7 +8,6 @@
 import UIKit
 
 class FavoritesListVC: GFDataLoadingVC {
-    
     let tableView = UITableView()
     var favorites: [Follower] = []
     
@@ -46,18 +45,22 @@ class FavoritesListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let favorites):
-                if (favorites.isEmpty) {
-                    showEmptyStateView(with: "No favorites?\nAdd some by following users!", in: self.view)
-                } else {
-                    DispatchQueue.main.async {
-                        self.favorites = favorites
-                        self.tableView.reloadData()
-                        // or remove from here and call extension reloadDaaOnMainThread()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
+                self.updateUI(with: favorites)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    func updateUI(with favorites: [Follower]) {
+        if (favorites.isEmpty) {
+            showEmptyStateView(with: "No favorites?\nAdd some by following users!", in: self.view)
+        } else {
+            DispatchQueue.main.async {
+                self.favorites = favorites
+                self.tableView.reloadData()
+                // or remove from here and call extension reloadDaaOnMainThread()
+                self.view.bringSubviewToFront(self.tableView)
             }
         }
     }

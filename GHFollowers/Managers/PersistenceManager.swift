@@ -70,6 +70,7 @@ enum PersistenceManager {
         return nil
     }
     
+    // TO DO: Refactoring?
     //    static func save<T: Codable>(_ value: T, forKey key: String) {
     //        let data = try? JSONEncoder().encode(value)
     //        defaults.set(data, forKey: key)

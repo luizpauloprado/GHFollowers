@@ -8,7 +8,6 @@
 import UIKit
 
 class GFContainerView: UIView {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -25,5 +24,4 @@ class GFContainerView: UIView {
         layer.borderColor = UIColor.white.cgColor
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 class GFDataLoadingVC: UIViewController {
-    
     var containerView: UIView!
     
     override func viewDidLoad() {

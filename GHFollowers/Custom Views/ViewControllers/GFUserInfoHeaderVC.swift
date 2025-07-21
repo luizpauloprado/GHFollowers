@@ -8,7 +8,6 @@
 import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
-    
     let avatarImageView = GFAvatarImageView(frame: .zero)
     let usernameLabel = GFTitleLabel(textAlignemnt: .left, fontSize: 34)
     let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
@@ -41,7 +40,6 @@ class GFUserInfoHeaderVC: UIViewController {
         locationLabel.text = user.location ?? "No Location"
         bioLabel.text = user.bio ?? "No Bio"
         bioLabel.numberOfLines = 3
-        
         locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
     }

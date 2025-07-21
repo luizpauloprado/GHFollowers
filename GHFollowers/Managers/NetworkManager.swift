@@ -39,13 +39,11 @@ class NetworkManager {
             }
             
             do {
-                // let followers = try JSONDecoder().decode([Follower].self, from: data)
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(.success(followers))
             } catch {
-                // completed(nil, error.localizedDescription)
                 completed(.failure(.unableToParse))
             }
         }
