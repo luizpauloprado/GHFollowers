@@ -22,6 +22,18 @@ class FavoritesListVC: GFDataLoadingVC {
         getFavorities()
     }
     
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if favorites.isEmpty {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image = .init(systemName: "star")
+            config.text = "No favorites yet"
+            config.secondaryText = "Add a favorite to see it here."
+            contentUnavailableConfiguration = config
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+    
     func configure() {
         view.backgroundColor = .systemBackground
         title = "Favorites"
@@ -41,7 +53,7 @@ class FavoritesListVC: GFDataLoadingVC {
     
     func getFavorities() {
         PersistenceManager.retrieveFavorites { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             
             switch result {
             case .success(let favorites):
@@ -53,16 +65,24 @@ class FavoritesListVC: GFDataLoadingVC {
     }
     
     func updateUI(with favorites: [Follower]) {
-        if (favorites.isEmpty) {
-            showEmptyStateView(with: "No favorites?\nAdd some by following users!", in: self.view)
-        } else {
-            DispatchQueue.main.async {
-                self.favorites = favorites
-                self.tableView.reloadData()
-                // or remove from here and call extension reloadDaaOnMainThread()
-                self.view.bringSubviewToFront(self.tableView)
-            }
+        self.favorites = favorites
+        setNeedsUpdateContentUnavailableConfiguration()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.view.bringSubviewToFront(self.tableView)
         }
+        
+        // Using a custom empty state view
+        //        if (favorites.isEmpty) {
+        //            showEmptyStateView(with: "No favorites?\nAdd some by following users!", in: self.view)
+        //        } else {
+        //            DispatchQueue.main.async {
+        //                self.favorites = favorites
+        //                self.tableView.reloadData()
+        //                self.view.bringSubviewToFront(self.tableView)
+        //            }
+        //        }
     }
 }
 
@@ -91,10 +111,11 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
         
         let favorite = favorites[indexPath.row]
         PersistenceManager.updateWith(favorite: favorite, actionType: .remove) { [weak self] error in
-            guard let self = self else { return }
-            guard let error = error else {
+            guard let self else { return }
+            guard let error else {
                 favorites.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
+                setNeedsUpdateContentUnavailableConfiguration()
                 return
             }
             

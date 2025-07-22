@@ -24,6 +24,8 @@ https://seanallen.teachable.com/courses/681906/
 - [iPhone models adoption](https://mixpanel.com/trends/#)
 - [Meet the UIKit Button System](https://developer.apple.com/videos/play/wwdc2021/10064/)
 - [Swift async](https://developer.apple.com/videos/wwdc2021/?q=async)
+- [Async await in Swift explained with code examples](https://www.avanderlee.com/swift/async-await/)
+
 
 ### Arch
 

@@ -43,6 +43,20 @@ class FollowerListVC: GFDataLoadingVC {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    override func updateContentUnavailableConfiguration(using state: UIContentUnavailableConfigurationState) {
+        if followers.isEmpty && isLoadingMoreFollowers == false {
+            var config = UIContentUnavailableConfiguration.empty()
+            config.image = .init(systemName: "person.slash")
+            config.text = "No followers yet"
+            config.secondaryText = "This user has no followers."
+            contentUnavailableConfiguration = config
+        } else if isSearching && filteredFollowers.isEmpty {
+            contentUnavailableConfiguration = UIContentUnavailableConfiguration.search()
+        } else {
+            contentUnavailableConfiguration = nil
+        }
+    }
+    
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -81,7 +95,6 @@ class FollowerListVC: GFDataLoadingVC {
             do {
                 let followers  = try await NetworkManager.shared.getFollowers(for: username, page: page)
                 updateUI(with: followers)
-                
             } catch {
                 dismissLoadingView()
                 if let gfError = error as? GFError {
@@ -99,15 +112,17 @@ class FollowerListVC: GFDataLoadingVC {
         }
         
         self.followers.append(contentsOf: followers)
-        if self.followers.isEmpty {
-            let message = "This user doesn't have any followers. Go follow them 😀."
-            DispatchQueue.main.async {
-                self.showEmptyStateView(with: message, in: self.view)
-            }
-            return
-        }
-        
         self.updateData(on: self.followers)
+        setNeedsUpdateContentUnavailableConfiguration()
+        
+        // Using a custom empty state view
+        //        if self.followers.isEmpty {
+        //            let message = "This user doesn't have any followers. Go follow them 😀."
+        //            DispatchQueue.main.async {
+        //                self.showEmptyStateView(with: message, in: self.view)
+        //            }
+        //            return
+        //        }
     }
     
     func configureDataSrouce() {
@@ -153,9 +168,9 @@ class FollowerListVC: GFDataLoadingVC {
         let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
         
         PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-            guard let self = self else { return }
+            guard let self else { return }
             
-            guard let error = error else {
+            guard let error else {
                 self.presentGFAlert(title: "Success", message: "You have successfully saved this user 🎉", buttonTitle: "Ok")
                 return
             }
@@ -205,6 +220,7 @@ extension FollowerListVC: UISearchResultsUpdating {
         }
         
         updateData(on: filteredFollowers)
+        setNeedsUpdateContentUnavailableConfiguration()
     }
 }
 

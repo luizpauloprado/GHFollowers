@@ -37,3 +37,8 @@ class GFButton: UIButton {
         configuration?.imagePlacement = .leading
     }
 }
+
+#Preview {
+    let button = GFButton(color: .systemBlue, title: "Follow", systemImageName: "person.fill")
+    return button
+}
