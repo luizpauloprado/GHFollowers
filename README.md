@@ -16,6 +16,7 @@ https://seanallen.teachable.com/courses/681906/
 - [Codable cheat sheet](https://www.hackingwithswift.com/articles/119/codable-cheat-sheet)
 - [Swift Strong and Weak References](https://www.programiz.com/swift-programming/strong-weak-reference)
 - [NSDateFormatter.com](https://www.nsdateformatter.com/)
+- [Navigation Controller](https://www.youtube.com/watch?v=LbAd2FIlnos)
 - [Communication Patterns in Swift](https://medium.com/@hakanor/communication-patterns-in-swift-0725041ad409)
 - [Mastering Swift Notification Observers with Coding Examples](https://vikramios.medium.com/swift-notification-observers-bbc5b86a7781)
 - [The Ultimate Guide To iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
@@ -23,9 +24,12 @@ https://seanallen.teachable.com/courses/681906/
 - [Variadic functions](https://www.hackingwithswift.com/sixty/5/7/variadic-functions)
 - [iPhone models adoption](https://mixpanel.com/trends/#)
 - [Meet the UIKit Button System](https://developer.apple.com/videos/play/wwdc2021/10064/)
+- [UIStackView](https://developer.apple.com/documentation/uikit/uistackview)
 - [Swift async](https://developer.apple.com/videos/wwdc2021/?q=async)
 - [Async await in Swift explained with code examples](https://www.avanderlee.com/swift/async-await/)
-
+- [Actors in Swift: how to use and prevent data races](https://www.avanderlee.com/swift/actors/)
+- [MainActor usage in Swift explained to dispatch to the main thread](https://www.avanderlee.com/swift/mainactor-dispatch-main-thread/)
+- [Swift Tutorial: How to use Coordinator Pattern with MVVM - Advanced Navigation in UIKit & SwiftUI](https://www.youtube.com/watch?v=wpw3l_jTuOo)
 
 ### Arch
 
@@ -117,6 +121,13 @@ In iOS development, present and UINavigationController offer distinct ways to tr
 ### Enum vs. Structures
 In Swift, both structs and enums are value types, but they serve different purposes. Structs are used to group related data and functionality, while enums are used to define a set of related values. Structs are copied when passed around, making them suitable for representing simple data structures. Enums, on the other hand, are used to represent a fixed set of related values, ensuring type safety and preventing unexpected values. 
 
+### Completion closure vs. Async Await
+Downsides that are solved by using async instead:
+You have to call the completion closure in each possible method exit. Not doing so will possibly result in an app endlessly waiting for a result.
+Closures are more complicated to read. Reasoning about the order of execution is not as easy as it is with structured concurrency.
+Retain cycles need to be avoided using weak references.
+Implementors need to switch over the result to get the outcome. Try-catch statements cannot be used at the implementation level.
+
 ## To do
 - Add tests
 - Create a new screen from scratch
@@ -124,4 +135,5 @@ In Swift, both structs and enums are value types, but they serve different purpo
 - Ask AI interview questions
 - PersistenceManager refactoring
 - NetworkManager refactoring 
-- Use URLComponents in NetworkManager
+- Use URLComponents in NetworkManager [(link)](https://www.swiftbysundell.com/articles/constructing-urls-in-swift/)
+- Create an MVVM screen or MVVM-C [(link to MVVM-C)](https://www.youtube.com/watch?v=wpw3l_jTuOo)
