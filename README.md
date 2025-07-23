@@ -17,6 +17,8 @@ https://seanallen.teachable.com/courses/681906/
 - [Swift Strong and Weak References](https://www.programiz.com/swift-programming/strong-weak-reference)
 - [NSDateFormatter.com](https://www.nsdateformatter.com/)
 - [Navigation Controller](https://www.youtube.com/watch?v=LbAd2FIlnos)
+- [How does UIKit Navigation work in iOS?](https://www.youtube.com/watch?v=qJjZsLpGOnQ)
+- [UIKit Programmatic Navigation and TabBar Controllers](https://www.youtube.com/watch?v=c0YSGtFmik8)
 - [Communication Patterns in Swift](https://medium.com/@hakanor/communication-patterns-in-swift-0725041ad409)
 - [Mastering Swift Notification Observers with Coding Examples](https://vikramios.medium.com/swift-notification-observers-bbc5b86a7781)
 - [The Ultimate Guide To iPhone Resolutions](https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions)
